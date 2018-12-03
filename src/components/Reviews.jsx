@@ -29,9 +29,11 @@ class Reviews extends React.Component {
           'Longitude': -122.6587
         }
       },
-      bike_shares: []
+      bike_shares: [],
+      page: 0
     }
     this.changeSelection = this.changeSelection.bind(this);
+    this.flipShares = this.flipShares.bind(this);
   }
 
   changeSelection(e) {
@@ -69,10 +71,34 @@ class Reviews extends React.Component {
     })
   }
 
+  flipShares(e) {
+    let count;
+    // e.target.dataset.set - necessary to access data attribute
+    console.log(this.state.bike_shares.length);
+    const direction = e.target.dataset.set
+    if (direction === 'back') {
+      count = this.state.page - 1;
+      if (count >= 0) {
+        this.setState({
+          page: count
+        })
+      }
+    } else {
+      if (this.state.page*10 < this.state.bike_shares.length) {
+        count = this.state.page + 1;
+        this.setState({
+          page: count
+        })
+      }
+    }
+  }
+
   render() {
     let shares;
     if (this.state.bike_shares.length > 0) {
-      shares = this.state.bike_shares.map((bike) => {
+      const start = this.state.page*10;
+      const sharing_bikes = this.state.bike_shares.slice(start, start + 10);
+      shares = sharing_bikes.map((bike) => {
         return <div className="reviews-margin">
           <p>{bike.name}</p>
           <p>{bike.location}</p>
@@ -99,6 +125,10 @@ class Reviews extends React.Component {
             <option value="Portland">Portland</option>
           </select>
           {shares}
+          <div className="reviews-margin">
+            <span className="reviews-span-space"><i class="fas fa-arrow-left" onClick={this.flipShares} data-set="back"></i></span>
+            <span className="reviews-span-space"><i class="fas fa-arrow-right" onClick={this.flipShares} data-set="forward"></i></span>
+          </div>
         </div>
         <div className="reviews-col-end">
           <h2>Advertisements</h2>

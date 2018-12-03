@@ -114,6 +114,10 @@ a {
   justify-content: flex-end;
 }
 
+.reviews-span-space {
+  margin-right: 20px;
+}
+
 select {
   width: 50%;
   height: 40px;
