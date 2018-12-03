@@ -4,8 +4,8 @@ This is a review site created to allow users to review different bike share serv
 
 Technologies Used:
 
-Redux
 React
+React-Router
 Express
 MongoDB
 Coord API
