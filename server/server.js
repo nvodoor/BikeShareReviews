@@ -15,10 +15,9 @@ app.use(morgan("default"));
 app.get('/bikeshares/city/:longitude/:latitude', (req, res) => {
   const long = parseFloat(req.params.longitude.slice(1));
   const lat = parseFloat(req.params.latitude.slice(1));
-  axios.get(`https://api.coord.co/v1/sv/location?latitude=${lat}&longitude=${long}&radius_km=1&access_key=${config.ACCESS_KEY}`)
+  axios.get(`https://api.coord.co/v1/sv/location?latitude=${lat}&longitude=${long}&radius_km=2.0&access_key=${config.ACCESS_KEY}`)
   .then(resp => {
     const data = resp.data.features;
-    console.log(data.length);
     res.send(data);
   })
   .catch(err => console.log(err));

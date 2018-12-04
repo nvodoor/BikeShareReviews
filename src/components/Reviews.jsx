@@ -36,6 +36,10 @@ class Reviews extends React.Component {
     this.flipShares = this.flipShares.bind(this);
   }
 
+  componentDidMount() {
+    this.changeReviews(this.state.city);
+  }
+
   changeSelection(e) {
     let cities = this.state.cities
     for (let k in cities) {
@@ -99,11 +103,15 @@ class Reviews extends React.Component {
       const start = this.state.page*10;
       const sharing_bikes = this.state.bike_shares.slice(start, start + 10);
       shares = sharing_bikes.map((bike) => {
-        return <div className="reviews-margin">
-          <p>{bike.name}</p>
-          <p>{bike.location}</p>
-          <p>{bike.vehicles}</p>
-          <p>{bike.rating}</p>
+        return <div className="reviews-box">
+          <div className="reviews-box-width">
+            <span className="reviews-box-start">Name: {bike.name}</span>
+            <span className="reviews-box-end">Location: {bike.location}</span>
+          </div>
+          <div className="reviews-box-width">
+            <span className="reviews-box-start">Vehicles: {bike.vehicles}</span>
+            <span className="reviews-box-end">Rating: {bike.rating}</span>
+          </div>
         </div>
       })
     } else {

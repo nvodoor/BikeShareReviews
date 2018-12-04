@@ -52,7 +52,9 @@ a {
     }
 .about {
   display: flex;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #eff0f2;
+  height: 1000px;
 }
 
 .about-col-start {
@@ -90,15 +92,17 @@ a {
 }
 .reviews-container {
   display: flex;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #f9fafc;
+  height: 1000px;
 }
 
 .reviews-col-start {
-  width: 30%;
+  width: 27%;
 }
 
 .reviews-col-mid {
-  width: 40%;
+  width: 46%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -109,7 +113,7 @@ a {
 }
 
 .reviews-col-end {
-  width: 30%;
+  width: 27%;
   display: flex;
   justify-content: flex-end;
 }
@@ -122,4 +126,29 @@ select {
   width: 50%;
   height: 40px;
   font-size: 1em;
+}
+
+.reviews-box {
+  display: flex;
+  flex-direction: column;
+  background-color: #99ffcc;
+  width: 100%;
+  height: 50px;
+  margin: 20px;
+}
+
+.reviews-box-width {
+  display: flex;
+  width: 100%;
+}
+
+.reviews-box-start {
+  display: flex;
+  width: 50%;
+}
+
+.reviews-box-end {
+  display: flex;
+  width: 50%;
+  justify-content: flex-end;
 }
