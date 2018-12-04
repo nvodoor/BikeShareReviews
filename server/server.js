@@ -27,7 +27,8 @@ app.get('/bikeshares/city/:longitude/:latitude', (req, res) => {
 })
 
 app.get('/bikeshares/city/:name', (req, res) => {
-  const name = req.params.name.slice(1);
+  const name = req.params.name;
+  console.log(name);
   control.findReviews(name, (err, result) => {
     if (err) {
       console.log(err);
@@ -39,7 +40,7 @@ app.get('/bikeshares/city/:name', (req, res) => {
   })
 })
 
-app.post('/bikeshare/city/', (req, res) => {
+app.post('/bikeshares/city/', (req, res) => {
   console.log(req.body);
   control.saveReviews(req.body, (err, result) => {
     if (err) {
@@ -50,7 +51,6 @@ app.post('/bikeshare/city/', (req, res) => {
       res.send(result);
     }
   })
-  res.send('success');
 })
 
 app.listen(3000, () => {
