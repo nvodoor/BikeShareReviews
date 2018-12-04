@@ -5,6 +5,9 @@ const morgan = require('morgan');
 const cors = require('cors');
 const axios = require('axios');
 const config = require('../config.js');
+const db = require('../database/index.js');
+const control = require('../database/controllers.js');
+
 
 const app = express();
 
@@ -23,6 +26,32 @@ app.get('/bikeshares/city/:longitude/:latitude', (req, res) => {
   .catch(err => console.log(err));
 })
 
+app.get('/bikeshares/city/:name', (req, res) => {
+  const name = req.params.name.slice(1);
+  control.findReviews(name, (err, result) => {
+    if (err) {
+      console.log(err);
+      res.send(err);
+    } else {
+      console.log(result);
+      res.send(result);
+    }
+  })
+})
+
+app.post('/bikeshare/city/', (req, res) => {
+  console.log(req.body);
+  control.saveReviews(req.body, (err, result) => {
+    if (err) {
+      console.log(err);
+      res.send(err);
+    } else {
+      console.log(result);
+      res.send(result);
+    }
+  })
+  res.send('success');
+})
 
 app.listen(3000, () => {
   console.log('Listening on Port 3000');
